@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "ParentVPCStack",
+        "ParameterValue": "VPCAPI"
+    },
+    {
+        "ParameterKey": "Environment",
+        "ParameterValue": "API"
+    },
+    {
+        "ParameterKey": "SubnetZone",
+        "ParameterValue": "A"
+    }
+]

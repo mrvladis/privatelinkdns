@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'VPC Cloudfromation temlate. Based on the cloudonaut.io VPC template'
+Description: 'VPC Cloudfromation temlate'
 Metadata:
   'AWS::CloudFormation::Interface':
     ParameterGroups:
@@ -395,12 +395,6 @@ Resources:
       Egress: true
       Ipv6CidrBlock: '::/0'
 Outputs:
-  TemplateID:
-    Description: 'cloudonaut.io template id.'
-    Value: 'vpc/vpc-3azs'
-  TemplateVersion:
-    Description: 'cloudonaut.io template version.'
-    Value: '__VERSION__'
   StackName:
     Description: 'Stack name.'
     Value: !Sub '${AWS::StackName}'

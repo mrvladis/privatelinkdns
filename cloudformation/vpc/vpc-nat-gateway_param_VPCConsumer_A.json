@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "ParentVPCStack",
+        "ParameterValue": "VPCConsumer"
+    },
+    {
+        "ParameterKey": "Environment",
+        "ParameterValue": "Consumer"
+    },
+    {
+        "ParameterKey": "SubnetZone",
+        "ParameterValue": "A"
+    }
+]
