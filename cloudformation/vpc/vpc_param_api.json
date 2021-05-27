@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "VPCCIDRPrefix",
+        "ParameterValue": "10.101"
+    },
+    {
+        "ParameterKey": "VPCName",
+        "ParameterValue": "VPCAPI"
+    },
+    {
+        "ParameterKey": "Environment",
+        "ParameterValue": "API"
+    }
+]

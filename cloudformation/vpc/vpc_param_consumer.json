@@ -1,0 +1,14 @@
+[
+    {
+        "ParameterKey": "VPCCIDRPrefix",
+        "ParameterValue": "10.201"
+    },
+    {
+        "ParameterKey": "VPCName",
+        "ParameterValue": "VPCConsumer"
+    },
+    {
+        "ParameterKey": "Environment",
+        "ParameterValue": "Consumer"
+    }
+]
