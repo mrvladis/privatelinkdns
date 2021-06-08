@@ -1,0 +1,79 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  MyFirstLambdaGo
+  
+  Sample SAM Template for myfirstlambdago
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  BooksLambdaGoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: books/
+      Handler: main
+      Runtime: go1.x
+      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /books
+            Method: any
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          PARAM1: BooksLambdaGoFunction
+          PARAM2: BooksLambdaGoFunctionUpdate
+          AWSRegion: eu-west-2
+          secretName: dev/lambda/books/supersecret
+  Books:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - AttributeName: id
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput: 
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE        
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find  out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  MyFirstLambdaGoAPI:
+    Description: "API Gateway endpoint URL for Prod environment for First Function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  MyFirstLambdaGoFunction:
+    Description: "First Lambda Function ARN"
+    Value: !GetAtt MyFirstLambdaGoFunction.Arn
+  MyFirstLambdaGoFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt MyFirstLambdaGoFunctionRole.Arn
+
+  MySecondLambdaGoAPI:
+    Description: "API Gateway endpoint URL for Prod environment for MySecond Function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/mr/"
+  MySecondLambdaGoFunction:
+    Description: "MySecond Lambda Function ARN"
+    Value: !GetAtt MySecondLambdaGoFunction.Arn
+  MySecondLambdaGoFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt MySecondLambdaGoFunctionRole.Arn
+
+  BooksLambdaGoAPI:
+    Description: "API Gateway endpoint URL for Prod environment for MySecond Function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/mr/"
+  BooksLambdaGoFunction:
+    Description: "MySecond Lambda Function ARN"
+    Value: !GetAtt BooksLambdaGoFunction.Arn
+  BooksLambdaGoFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt BooksLambdaGoFunctionRole.Arn
