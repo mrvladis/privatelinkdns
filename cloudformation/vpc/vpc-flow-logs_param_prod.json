@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterKey": "ParentVPCStack",
+        "ParameterValue": "VPCStack"
+    },
+    {
+        "ParameterKey": "RetentionInDays",
+        "ParameterValue": "30"
+    },
+    {
+        "ParameterKey": "Environment",
+        "ParameterValue": "Production"
+    },
+    {
+        "ParameterKey": "TrafficType",
+        "ParameterValue": "REJECT"
+    }
+]

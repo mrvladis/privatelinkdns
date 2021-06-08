@@ -1,0 +1,6 @@
+[
+    {
+        "ParameterKey": "ParentVPCStack",
+        "ParameterValue": "VPCStack"
+    }
+]
